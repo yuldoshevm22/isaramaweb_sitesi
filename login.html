@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giriş Yap | İŞ BULMA SİTESİ</title>
+
+  <!-- CSS Bağlantıları -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Giriş Formu Bölümü -->
+  <section style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f8f9fa;">
+    <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+      <h3 class="text-center mb-4">Giriş Yap</h3>
+      <form action="php/login.php" method="post">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Adresi</label>
+          <input type="email" name="email" class="form-control" required placeholder="Email adresinizi girin">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Şifre</label>
+          <input type="password" name="password" class="form-control" required placeholder="Şifrenizi girin">
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Giriş Yap</button>
+        </div>
+      </form>
+      <p class="text-center mt-3">Hesabınız yok mu? <a href="register.html">Kayıt Ol</a></p>
+    </div>
+  </section>
+
+</body>
+</html>
