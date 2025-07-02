@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Favorilerim | İş Bulma</title>
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <section class="container py-5">
+    <h2 class="mb-4">Favorilere Eklenen İlanlar</h2>
+    <div class="row" id="favoriListesi"></div>
+  </section>
+
+  <!-- main.js'de ilanlar dizisi tanımlı olmalı -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const favoriler = JSON.parse(localStorage.getItem("favoriler")) || [];
+      const container = document.getElementById("favoriListesi");
+
+      if (favoriler.length === 0) {
+        container.innerHTML = "<p>Henüz favorilere eklenmiş bir ilan yok.</p>";
+        return;
+      }
+
+      // main.js içindeki 'ilanlar' dizisini burada kullan
+      const tumIlanlar = ilanlar;
+
+      favoriler.forEach(id => {
+        const ilan = tumIlanlar.find(i => i.id === id);
+        if (ilan) {
+          const card = document.createElement("div");
+          card.className = "col-md-6 col-lg-4 mb-4";
+          card.innerHTML = `
+            <div class="job-card p-4 shadow-sm">
+              <h5>${ilan.pozisyon}</h5>
+              <p class="text-muted"><strong>Şirket:</strong> ${ilan.firma}</p>
+              <p class="job-type">${ilan.tip}</p>
+              <p>${ilan.aciklama}</p>
+              <div class="d-flex justify-content-between mt-3">
+                <a href="job-details.html?id=${ilan.id}" class="btn btn-outline-secondary btn-sm">Detaylar</a>
+                <a href="apply.html?job=${ilan.id}" class="btn btn-primary btn-sm">Başvur</a>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
